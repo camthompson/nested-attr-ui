@@ -1,12 +1,22 @@
 <form>
-  {{input type='text' value=personName class='new-person-name'}}
-  {{input type='text' value=petName1 class='new-pet-name'}}
-  {{input type='text' value=petName2 class='new-pet-name'}}
+  <div>
+    <label for='new-person-name'>Person</label>
+    {{input type='text' value=personName id='new-person-name'}}
+  </div>
+  <div>
+    <label for='new-pet-name-1'>Pet 1</label>
+    {{input type='text' value=petName1 id='new-pet-name-1'}}
+  </div>
+  <div>
+    <label for='new-pet-name-2'>Pet 2</label>
+    {{input type='text' value=petName2 id='new-pet-name-2'}}
+  </div>
   <button {{action 'addPerson' personName petName1 petName2}} class='add-person'>
     Add
   </button>
 </form>
 {{#each model as |person|}}
+  <hr />
   <div class='person'>
     <p class='person-name'>{{person.name}}</p>
     {{#each person.pets as |pet|}}

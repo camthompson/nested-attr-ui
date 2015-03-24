@@ -22,9 +22,9 @@ module('Acceptance: Add person', {
 
 test('Adding two people', function(assert) {
   visit('/');
-  fillIn('.new-person-name', 'Jon');
+  fillIn('#new-person-name', 'Jon');
   click('.add-person');
-  fillIn('.new-person-name', 'Seymour');
+  fillIn('#new-person-name', 'Seymour');
   click('.add-person');
 
   andThen(function() {
@@ -37,9 +37,9 @@ test('Adding two people', function(assert) {
 
 test('Adding a person with pets', function(assert) {
   visit('/');
-  fillIn('.new-person-name', 'Jon');
-  fillIn('.new-pet-name:eq(0)', 'Garfield');
-  fillIn('.new-pet-name:eq(1)', 'Odie');
+  fillIn('#new-person-name', 'Jon');
+  fillIn('#new-pet-name-1', 'Garfield');
+  fillIn('#new-pet-name-2', 'Odie');
   click('.add-person');
 
   andThen(function() {
