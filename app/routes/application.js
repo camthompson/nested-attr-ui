@@ -12,7 +12,9 @@ export default Ember.Route.extend({
       });
       let person = this.store.createRecord('person', { name: personName });
       person.get('pets').addObjects(pets);
-      person.save();
+      person.save().then(function() {
+        person.get('pets').removeObjects(pets);
+      });
     },
 
     removePerson(person) {

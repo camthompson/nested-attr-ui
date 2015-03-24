@@ -43,7 +43,7 @@ test('Adding a person with pets', function(assert) {
   click('.add-person');
 
   andThen(function() {
-    assert.ok(find(".person:contains('Jon') .pet:contains('Garfield')").length, 'Garfield is added');
-    assert.ok(find(".person:contains('Jon') .pet:contains('Odie')").length, 'Odie is added');
+    assert.equal(find(".person:contains('Jon') .pet:contains('Garfield')").length, 1, 'Garfield is added');
+    assert.equal(find(".person:contains('Jon') .pet:contains('Odie')").length, 1, 'Odie is added');
   });
 });
