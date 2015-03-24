@@ -2,4 +2,5 @@
 <button {{action 'addPerson' newName}} class='add-person'>Add</button>
 {{#each model as |person|}}
   <p class='person-name'>{{person.name}}</p>
+  <button {{action 'removePerson' person}} class='remove-person'>Remove</button>
 {{/each}}

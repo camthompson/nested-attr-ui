@@ -30,4 +30,11 @@ test('Adding a person', function(assert) {
     assert.equal(find('.person-name:eq(1)').text(), 'Seymour',
                  'Seymour is added');
   });
+
+  click('.remove-person:eq(0)');
+  click('.remove-person:eq(0)');
+
+  andThen(function() {
+    assert.equal(find('.person-name').length, 0, 'People are removed');
+  });
 });
