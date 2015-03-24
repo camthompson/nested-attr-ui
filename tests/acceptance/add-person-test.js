@@ -13,11 +13,14 @@ module('Acceptance: Add person', {
   },
 
   afterEach: function() {
-    Ember.run(application, 'destroy');
+    click('.remove-person');
+    andThen(function() {
+      Ember.run(application, 'destroy');
+    });
   }
 });
 
-test('Adding a person', function(assert) {
+test('Adding two people', function(assert) {
   visit('/');
   fillIn('.new-person-name', 'Jon');
   click('.add-person');
@@ -30,11 +33,17 @@ test('Adding a person', function(assert) {
     assert.equal(find('.person-name:eq(1)').text(), 'Seymour',
                  'Seymour is added');
   });
+});
 
-  click('.remove-person:eq(0)');
-  click('.remove-person:eq(0)');
+test('Adding a person with pets', function(assert) {
+  visit('/');
+  fillIn('.new-person-name', 'Jon');
+  fillIn('.new-pet-name:eq(0)', 'Garfield');
+  fillIn('.new-pet-name:eq(1)', 'Odie');
+  click('.add-person');
 
   andThen(function() {
-    assert.equal(find('.person-name').length, 0, 'People are removed');
+    assert.ok(find(".person:contains('Jon') .pet:contains('Garfield')").length, 'Garfield is added');
+    assert.ok(find(".person:contains('Jon') .pet:contains('Odie')").length, 'Odie is added');
   });
 });

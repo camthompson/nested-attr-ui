@@ -1,6 +1,19 @@
-{{input type='text' value=newName class='new-person-name'}}
-<button {{action 'addPerson' newName}} class='add-person'>Add</button>
+<form>
+  {{input type='text' value=personName class='new-person-name'}}
+  {{input type='text' value=petName1 class='new-pet-name'}}
+  {{input type='text' value=petName2 class='new-pet-name'}}
+  <button {{action 'addPerson' personName petName1 petName2}} class='add-person'>
+    Add
+  </button>
+</form>
 {{#each model as |person|}}
-  <p class='person-name'>{{person.name}}</p>
-  <button {{action 'removePerson' person}} class='remove-person'>Remove</button>
+  <div class='person'>
+    <p class='person-name'>{{person.name}}</p>
+    {{#each person.pets as |pet|}}
+      <div class='pet'>
+        <p class='pet-name'>{{pet.name}}</p>
+      </div>
+    {{/each}}
+    <button {{action 'removePerson' person}} class='remove-person'>Remove</button>
+  </div>
 {{/each}}
