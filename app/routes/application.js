@@ -7,13 +7,15 @@ export default Ember.Route.extend({
 
   actions: {
     addPerson(personName, petName1, petName2) {
-      let pets = [petName1, petName2].compact().map((petName) => {
+      const pets = [petName1, petName2].compact().map((petName) => {
         return this.store.createRecord('pet', { name: petName });
       });
-      let person = this.store.createRecord('person', { name: personName });
+      const person = this.store.createRecord('person', { name: personName });
       person.get('pets').addObjects(pets);
       person.save().then(function() {
-        person.get('pets').removeObjects(pets);
+        pets.map(function(pet) {
+          pet.deleteRecord();
+        });
       });
     },
 
