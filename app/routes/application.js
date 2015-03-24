@@ -10,8 +10,8 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    addPerson() {
-      this.get('people').addObject({ name: 'Jon' });
+    addPerson(name) {
+      this.get('people').addObject({ name: name });
     }
   }
 });

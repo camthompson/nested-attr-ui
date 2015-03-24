@@ -1,5 +1,5 @@
-{{input type='text' class='new-person-name'}}
-<button {{action 'addPerson'}} class='add-person'>Add</button>
+{{input type='text' value=newName class='new-person-name'}}
+<button {{action 'addPerson' newName}} class='add-person'>Add</button>
 {{#each model as |person|}}
   <p class='person-name'>{{person.name}}</p>
 {{/each}}

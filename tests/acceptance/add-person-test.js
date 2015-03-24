@@ -21,8 +21,13 @@ test('Adding a person', function(assert) {
   visit('/');
   fillIn('.new-person-name', 'Jon');
   click('.add-person');
+  fillIn('.new-person-name', 'Seymour');
+  click('.add-person');
 
   andThen(function() {
-    assert.equal(find('.person-name').text(), 'Jon', 'Person is added');
+    assert.equal(find('.person-name:eq(0)').text(), 'Jon',
+                 'Jon is added');
+    assert.equal(find('.person-name:eq(1)').text(), 'Seymour',
+                 'Seymour is added');
   });
 });
