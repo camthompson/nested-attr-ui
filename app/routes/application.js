@@ -13,7 +13,7 @@ export default Ember.Route.extend({
       const person = this.store.createRecord('person', { name: personName });
       person.get('pets').addObjects(pets);
       person.save().then(function() {
-        pets.map(function(pet) {
+        pets.forEach(function(pet) {
           pet.deleteRecord();
         });
       });
